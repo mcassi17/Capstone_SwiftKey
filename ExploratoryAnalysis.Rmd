@@ -1,0 +1,20 @@
+---
+title: "Exploratory Analysis"
+author: "Matthew Cassi"
+date: "August 30, 2016"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Introduction
+
+##Basic Analysis of Data
+
+##Data Cleanup
+
+##Exploratory Analysis
+
+##Next Steps for Prediction Algorithm
