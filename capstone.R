@@ -1,0 +1,18 @@
+twitter <- readLines('en_US.twitter.txt', encoding = 'UTF-8')
+blogs <- readLines('en_US.blogs.txt', encoding = 'UTF-8')
+news <- readLines('en_US.news.txt', encoding = 'UTF-8')
+set.seed(1936)
+smallTwitter <- sample(twitter, 80000)
+smallBlogs <- sample(blogs, 80000)
+smallNews <- sample(news, 80000)
+library(tm)
+## https://github.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/blob/master/en
+badWords <- readLines("/Users/mcassi17/Desktop/Coursera/capstone/sampleFiles/badwords.txt")
+tokenTwitter <- tokenizeFile(smallTwitter, badWordFile)
+tokenBlogs <- tokenizeFile(smallBlogs, badWordFile)
+tokenNews <- tokenizeFile(smallNews, badWordFile)
+fullToken <- rbind(tokenTwitter, tokenBlogs, tokenNews)
+dtm <- DocumentTermMatrix(fullToken)
+freq <- colSums(as.matrix(dtm))
+library(ngram)
+
