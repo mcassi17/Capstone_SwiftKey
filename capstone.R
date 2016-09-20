@@ -1,4 +1,4 @@
-library(strini)
+library(stringi)
 library(tm)
 library(ngram)
 library(ggplot2)
@@ -8,6 +8,8 @@ library(openNLP)
 library(qdap)
 library(RWeka)
 library(slam)
+library(rpart)
+library(ngram)
 
 ## Read in lines from each of the datasets
 twitter <- readLines('en_US.twitter.txt')
@@ -155,6 +157,6 @@ df3$end <- df3$term
 df3 <- df3 %>% separate(col = end, into = c('first', 'second', 'third'), sep = "\\s")
 df3 <- df3 %>% unite(start, first, second, sep = " ")
 
-df2$term <- as.character(df2$term)
-df2$end <- df2$term
+df2$bigrams <- as.character(df2$bigrams)
+df2$end <- df2$bigrams
 df2 <- df2 %>% separate(col = end, into = c('start', 'end'), sep = "\\s")
